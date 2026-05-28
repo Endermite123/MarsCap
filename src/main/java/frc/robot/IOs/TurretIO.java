@@ -1,13 +1,12 @@
 package frc.robot.IOs;
 
+import com.stzteam.features.marsprocessor.Fallback;
 import com.stzteam.mars.models.singlemodule.Data;
 import com.stzteam.mars.models.singlemodule.IO;
 
 import edu.wpi.first.math.geometry.Rotation2d;
 
-
-
-
+@Fallback
 public interface TurretIO extends IO<TurretIO.TurretInputs> {
     public static class TurretInputs extends Data<TurretInputs> {
         public Rotation2d targetAngle = new Rotation2d();
