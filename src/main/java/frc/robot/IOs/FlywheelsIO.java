@@ -18,12 +18,5 @@ public interface FlywheelsIO extends IO<FlywheelsIO.FlywheelsInputs> {
     public void reverse(double speed);
     public void stop();
 
-        //Setters
-        public void setCurrentRPM(double rpm);
-        public void setTargetRPM(double rpm);
-    
-        //Getters
-        public double getCurrentRPM();
-        public double getTargetRPM();
     
 }

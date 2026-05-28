@@ -20,13 +20,7 @@ public interface ArmIO extends IO<ArmIO.ArmInputs> {
     public void setAbsolute0();
     public void stop();
 
-        //Setters
-        public void setCurrentAngle(double angle);
-        public void setTargetAngle(double angle);
-    
-        //Getters
-        public double getCurrentAngle();
-        public double getTargetAngle();
+
 
     
 }
