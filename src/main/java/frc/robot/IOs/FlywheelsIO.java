@@ -15,7 +15,6 @@ public interface FlywheelsIO extends IO<FlywheelsIO.FlywheelsInputs> {
 
     public void setVoltage(double voltage);
     public void setRPM(double rpm);
-    public void reverse(double speed);
     public void stop();
 
     

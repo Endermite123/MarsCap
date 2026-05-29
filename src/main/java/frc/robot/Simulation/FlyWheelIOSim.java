@@ -45,14 +45,5 @@ public class FlyWheelIOSim implements FlywheelsIO {
     public void setRPM(double rpm) {
         flywheelSim.setInputVoltage(this.appliedVoltage);
     }
-
-    @Override
-    public void reverse(double speed) {
-        this.appliedVoltage = -speed;
-    }
-
-
-
-    
     
 }

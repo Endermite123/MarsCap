@@ -1,5 +1,7 @@
 package frc.robot.Motors;
 
+import com.ctre.phoenix6.configs.TalonFXConfiguration;
+import com.ctre.phoenix6.configs.TalonFXConfigurator;
 import com.ctre.phoenix6.controls.VelocityVoltage;
 import com.ctre.phoenix6.hardware.TalonFX;
 
@@ -7,12 +9,20 @@ import frc.robot.IOs.FlywheelsIO;
 
 public class FlywheelsIOKraken implements FlywheelsIO {
 
-    TalonFX flywheelsMotor ;
+    private TalonFX flywheelsMotor;
+    private TalonFXConfiguration flywheelsConfig;
+    private TalonFXConfigurator fconfigurator;
+    
     private final VelocityVoltage velocityControl = new VelocityVoltage(0);   
     private double targetRPM = 0;
 
     public FlywheelsIOKraken (){
         flywheelsMotor = new TalonFX(0);
+        flywheelsConfig = new TalonFXConfiguration();
+        fconfigurator = flywheelsMotor.getConfigurator();
+        flywheelsConfig.Feedback.SensorToMechanismRatio = 1;
+        fconfigurator.apply(flywheelsConfig);
+
     }
 
     @Override
@@ -35,11 +45,6 @@ public class FlywheelsIOKraken implements FlywheelsIO {
         double rps = rpm / 60.0;
         flywheelsMotor.setControl(velocityControl.withVelocity(rps));
         this.targetRPM = rpm;
-    }
-
-    @Override
-    public void reverse(double speed) {
-        flywheelsMotor.setVoltage(-speed);
     }
 
     @Override

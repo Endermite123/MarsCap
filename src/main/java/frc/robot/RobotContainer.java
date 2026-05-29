@@ -9,9 +9,14 @@ import com.stzteam.mars.test.TestRoutine;
 
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Commands;
+import frc.robot.Simulation.ArmCanvas;
+import frc.robot.Simulation.ElevatorCanvas;
 import frc.tests.EmptyTest;
 
 public class RobotContainer implements IRobotContainer{
+
+  ArmCanvas armCanvas = new ArmCanvas();
+  ElevatorCanvas elevatorCanvas = new ElevatorCanvas();
 
   public RobotContainer() {}
 
