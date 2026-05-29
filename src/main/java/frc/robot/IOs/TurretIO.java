@@ -26,7 +26,7 @@ public interface TurretIO extends IO<TurretIO.TurretInputs> {
         clone.rps = this.rps;
         clone.voltage = this.voltage;
         clone.current = this.current;
-                return clone;
+        return clone;
 }
     }
 
