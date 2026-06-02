@@ -6,6 +6,8 @@ public class KeyManager {
 
     private KeyManager() {}
 
+    public static final String ARM_KEY = "Arm"
+;
     public static final String myKey = "TestKey";
     public static final BlackboardKey<String> myBlackboardKey = new BlackboardKey<>(myKey, String.class);
     public static final BlackboardKey<Double> myBlackBoardKeyDouble = new BlackboardKey<>(myKey, Double.class);
