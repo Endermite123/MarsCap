@@ -5,20 +5,37 @@
 package frc.robot;
 
 import com.stzteam.mars.models.containers.IRobotContainer;
+import com.stzteam.mars.operator.ControllerOI;
 import com.stzteam.mars.test.TestRoutine;
 
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Commands;
+import frc.robot.Bindings.OperatorBindings;
+import frc.robot.Bindings.TestBindings;
+import frc.robot.Mechanisms.Arm;
 import frc.robot.Simulation.ArmCanvas;
 import frc.robot.Simulation.ElevatorCanvas;
-import frc.tests.EmptyTest;
-
+import frc.robot.configuration.Manifest;
 public class RobotContainer implements IRobotContainer{
 
   ArmCanvas armCanvas = new ArmCanvas();
   ElevatorCanvas elevatorCanvas = new ElevatorCanvas();
 
-  public RobotContainer() {}
+  public final ControllerOI operator;
+  public final TestBindings test;
+
+  
+  public final Arm arm;
+
+  public RobotContainer() {
+
+    this.operator = Manifest.ControlsBuilder.buildOperator();  
+    this.arm = Manifest.buildArm();
+    OperatorBindings.Create(operator, arm).bind();
+    this.test = TestBindings.create(arm);
+
+    
+  }
 
   @Override
   public void updateNodes() {}
@@ -29,6 +46,6 @@ public class RobotContainer implements IRobotContainer{
 
   @Override
   public TestRoutine getTestRoutine() {
-    return new EmptyTest();
+    return test.getSelected();
   }
 }

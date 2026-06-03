@@ -7,6 +7,7 @@ import com.stzteam.mars.models.SubsystemBuilder;
 import com.stzteam.mars.models.Telemetry;
 import com.stzteam.mars.models.singlemodule.ModularSubsystem;
 
+import edu.wpi.first.math.MathUtil;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.IOs.ArmIO;
 import frc.robot.IOs.ArmIO.ArmInputs;
@@ -49,6 +50,12 @@ public class Arm extends ModularSubsystem<ArmInputs, ArmIO> implements ArmReques
         public void telemeterize(ArmInputs data) {
             NetworkIO.set(KeyManager.ARM_KEY, "Position", data.currentAngle);
         }
+    }
+
+        public boolean isAtTarget(double toleranceDegrees, Arm arm){
+        boolean isAtTarget = 
+        MathUtil.isNear(arm.getState().targetAngle.getDegrees(), arm.getState().currentAngle.getDegrees(), toleranceDegrees);
+        return isAtTarget;
     }
 
     
